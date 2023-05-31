@@ -77,7 +77,7 @@ export default function Registrar() {
 
           <div className="row" style={{ marginTop: 20 }}>
             <div className="col">
-              <button className="btn btn-primary btn-lg" onClick={botonGuardar}>Guardar Datos</button>
+              <button className="btn btn-success btn-lg" onClick={botonGuardar}>Guardar Datos</button>
             </div>
           </div>
         </form>

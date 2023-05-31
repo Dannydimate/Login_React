@@ -6,17 +6,21 @@ import Estadistica from './Estadistica'
 
 export default function Menu(props) {
 
+  const [usuario] = useState(localStorage.getItem("usuario"));
   const [registro, setRegistro] = useState("");
   const [list, setList] = useState("");
   const [estadistica, setEstadistica] = useState("");
 
 
   function cerrarSesion(){
+    localStorage.removeItem("usuario");
+    localStorage.removeItem("miLogin");
     document.getElementById("caja_menu").style.display = "none";    //ocultarla estructura del menu
     document.getElementById("form_login").style.display = "block";  //visible el formulario del login
     document.getElementById("txtusu").value = "" ;               //limpiar el nombre del usuario
     document.getElementById("txtpass").value = "" ;              //limpiar la contraseña
     document.getElementById("txtusu").focus();                //poner el foco en el usuario
+
   }
 
   function opcion_registrar(){
@@ -40,24 +44,24 @@ export default function Menu(props) {
     <>
       <div id="caja_menu" style={{ textAlign: "left" }}>
 
-        <strong className="h3">
-          Bienvenido Usuario : {props.usuario}
+        <strong className="h3" style={{ color: "black" }}>
+          Bienvenido Usuario : {usuario.toUpperCase()}
         </strong>
 
         <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{ marginTop: 20 }}>
           <div className="container-fluid">
 
-            <label className="navbar-brand  h5" href=" ">Menú Principal</label>
+            <label className="navbar-brand  h5" style={{ color: "green" }} href=" ">Menú Principal</label>
 
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div className="navbar-nav">
+              <div className="nav nav-tabs">
                 <NavLink to="" className="nav-link  h5  text-center" onClick={opcion_registrar} >Registrar</NavLink>
                 <NavLink to="" className="nav-link  h5  text-center" onClick={opcion_listar} >Listar</NavLink>
                 <NavLink to="" className="nav-link  h5  text-center" onClick={opcion_estadistica} >Estadistica</NavLink>
-                <a className="nav-link  h5  text-center" style={{ color: "blue" }} href=" " onClick={cerrarSesion} >Cerrar Sesión</a>
+                <a className="nav-link  h5  text-center" style={{ color: "green" }} href=" " onClick={cerrarSesion} >Cerrar Sesión</a>
               </div>
             </div>
           </div>
